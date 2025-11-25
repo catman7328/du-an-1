@@ -1,435 +1,76 @@
 <!DOCTYPE html>
 <html lang="vi">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Chúc mừng sinh nhật Quốc An 🎉</title>
-    <style>
-      :root {
-        --bg: #0b1020;
-        --text: #f6f7fb;
-        --cake-base: #f6d28c;
-        --cake-shadow: #b87537;
-        --icing: #fff6e8;
-        --flame1: #ffd77a;
-        --flame2: #ff694f;
-        --flame3: #fff3b8;
-      }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
-      html,
-      body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-        font-family: Inter, "Segoe UI", Roboto, system-ui, sans-serif;
-        background: linear-gradient(180deg, #071029 0%, #0b1020 60%);
-        color: var(--text);
-        overflow: hidden;
-      }
-
-      .scene {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-      }
-
-      .card {
-        text-align: center;
-        z-index: 2;
-      }
-
-      h1 {
-        font-size: 2.2rem;
-        margin: 6px 0 18px;
-        color: #ffe066;
-        text-shadow: 0 0 8px #ffd77a, 0 0 16px #ff6b6b;
-        animation: glow 2s ease-in-out infinite alternate;
-      }
-
-      @keyframes glow {
-        0% {
-          text-shadow: 0 0 8px #ffd77a, 0 0 16px #ff6b6b;
-        }
-        50% {
-          text-shadow: 0 0 16px #ffe066, 0 0 32px #ff9b66;
-        }
-        100% {
-          text-shadow: 0 0 8px #ffd77a, 0 0 16px #ff6b6b;
-        }
-      }
-
-      .stage {
-        position: relative;
-        width: 360px;
-        height: 320px;
-        margin: 0 auto;
-      }
-
-      .cake {
-        position: relative;
-        width: 260px;
-        margin: 0 auto;
-        cursor: pointer;
-      }
-
-      .tier {
-        width: 260px;
-        height: 90px;
-        background: var(--cake-base);
-        border-radius: 50%;
-        position: relative;
-        box-shadow: inset 0 -12px 0 var(--cake-shadow);
-      }
-
-      .tier-top {
-        width: 180px;
-        height: 70px;
-        margin: 0 auto;
-        margin-top: -40px;
-        background: var(--cake-base);
-        border-radius: 50%;
-        box-shadow: inset 0 -12px 0 var(--cake-shadow);
-      }
-
-      .icing {
-        position: absolute;
-        top: 6px;
-        left: 10px;
-        right: 10px;
-        height: 78px;
-        border-top-left-radius: 50%;
-        border-top-right-radius: 50%;
-        background: linear-gradient(180deg, var(--icing), #ffe1b8);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        z-index: 2;
-      }
-
-      .candles {
-        position: absolute;
-        top: -20px;
-        left: 50%;
-        transform: translateX(-50%);
-        display: flex;
-        gap: 16px;
-        z-index: 3;
-      }
-
-      .candle {
-        width: 16px;
-        height: 46px;
-        border-radius: 4px;
-        background: linear-gradient(180deg, #fff, #ffefe1);
-        position: relative;
-        display: flex;
-        align-items: flex-start;
-        justify-content: center;
-      }
-
-      .candle .stripe {
-        position: absolute;
-        left: 2px;
-        right: 2px;
-        height: 6px;
-        top: 10px;
-        background: linear-gradient(90deg, #ffd8aa, #ffb085);
-        opacity: 0.9;
-        border-radius: 2px;
-      }
-
-      .flame {
-        position: absolute;
-        top: -18px;
-        width: 16px;
-        height: 28px;
-        display: flex;
-        align-items: flex-start;
-        justify-content: center;
-      }
-
-      .f {
-        width: 10px;
-        height: 14px;
-        border-radius: 50%;
-        background: linear-gradient(180deg, var(--flame1), var(--flame2));
-        transform-origin: center bottom;
-        animation: flickerScale 1s ease-in-out infinite;
-      }
-
-      .f::after {
-        content: "";
-        position: absolute;
-        left: 2px;
-        top: -6px;
-        width: 6px;
-        height: 10px;
-        border-radius: 50%;
-        background: linear-gradient(180deg, var(--flame3), #ffd86b);
-        opacity: 0.95;
-      }
-
-      @keyframes flickerScale {
-        0% {
-          transform: translateY(0) scale(1);
-        }
-        50% {
-          transform: translateY(-3px) scale(0.92);
-        }
-        100% {
-          transform: translateY(0) scale(1);
-        }
-      }
-
-      .subtitle {
-        font-size: 1.2rem;
-        line-height: 1.6;
-        text-align: center;
-        color: #ffe066;
-        text-shadow: 0 0 6px #ffd77a, 0 0 12px #ff6b6b;
-        font-weight: 700;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        opacity: 0;
-        max-width: 90%;
-        margin: 20px auto 0 auto;
-        word-break: break-word;
-      }
-
-      .subtitle span {
-        display: inline-block;
-        opacity: 0;
-        transform: translateY(20px);
-        animation: wordUp 0.6s forwards;
-        margin: 0 4px 6px 4px;
-      }
-
-      @keyframes wordUp {
-        0% {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        100% {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .flowers {
-        position: absolute;
-        inset: 0;
-        pointer-events: none;
-        overflow: hidden;
-        z-index: 1;
-      }
-
-      .flower {
-        position: absolute;
-        will-change: transform, opacity;
-        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
-        transform-origin: center bottom;
-      }
-      svg.flower-svg {
-        width: 96px;
-        height: 96px;
-      }
-      .flower.small svg.flower-svg {
-        width: 60px;
-        height: 60px;
-      }
-      .flower.medium svg.flower-svg {
-        width: 80px;
-        height: 80px;
-      }
-
-      @keyframes floatRight {
-        0% {
-          transform: translateX(-120%) translateY(0) rotate(-10deg);
-          opacity: 0;
-        }
-        10% {
-          opacity: 1;
-        }
-        50% {
-          transform: translateX(120%) translateY(30vh) rotate(10deg);
-        }
-        100% {
-          transform: translateX(280%) translateY(60vh) rotate(20deg);
-          opacity: 0;
-        }
-      }
-      @keyframes floatLeft {
-        0% {
-          transform: translateX(120%) translateY(0) rotate(10deg);
-          opacity: 0;
-        }
-        10% {
-          opacity: 1;
-        }
-        50% {
-          transform: translateX(-120%) translateY(30vh) rotate(-10deg);
-        }
-        100% {
-          transform: translateX(-280%) translateY(60vh) rotate(-20deg);
-          opacity: 0;
-        }
-      }
-
-      #fireworks {
-        position: absolute;
-        inset: 0;
-        z-index: 0;
-        pointer-events: none;
-      }
-      footer {
-        position: absolute;
-        left: 20px;
-        right: 20px;
-        bottom: 14px;
-        text-align: center;
-        opacity: 0.6;
-        font-size: 0.9rem;
-      }
-    </style>
+    <title>Document</title>
   </head>
   <body>
-    <div class="scene">
-      <div class="flowers" id="flowers"></div>
-      <div class="card">
-        <h1>Chúc mừng sinh nhật <strong>Quốc An</strong> 🎉</h1>
-        <br />
-        <br />
-        <br />
-        <div class="stage">
-          <div class="cake" id="cake">
-            <div class="tier"></div>
-            <div class="tier-top"></div>
-            <div class="icing"></div>
-            <div class="candles">
-              <div class="candle">
-                <div class="stripe"></div>
-                <div class="flame"><div class="f"></div></div>
-              </div>
-              <div class="candle">
-                <div class="stripe"></div>
-                <div class="flame"><div class="f"></div></div>
-              </div>
-              <div class="candle">
-                <div class="stripe"></div>
-                <div class="flame"><div class="f"></div></div>
-              </div>
-            </div>
-          </div>
-          <div class="subtitle" id="subtitle">
-            chúc AN sinh nhật vui vẻ bên gia đình luôn khỏe mạnh học giỏi và may
-            mắn trong năm mới bớt lấy tay ướt bôi lên tui nhớ tập bóng chuyền
-            nha
-          </div>
-        </div>
+    <div class="body">
+      <div class="avatar1" data-aos="fade-right" data-aos-duration="1000">
+        <img width="50px" src="./anh/avatar.jpg" alt="avatar" />
       </div>
-      <canvas id="fireworks"></canvas>
+
+      <div class="tdgiua" data-aos="fade-down" data-aos-duration="1000">
+        GIỚI THIỆU ĐỒ HỌA
+      </div>
+
+      <div class="avatar2" data-aos="fade-left" data-aos-duration="1000">
+        <img width="50px" src="./anh/Wooden_Sword_JE2_BE2.webp" alt="avatar" />
+      </div>
     </div>
+    <div class="divfrien" data-aos="fade-up" data-aos-duration="2000">
+      <img
+        class="frierent"
+        width="100px"
+        src="./anh/frieren-ultrawide-5040x2160-15153.jpg"
+        alt="firen"
+      />
+    </div>
+    <p data-aos="fade-up" data-aos-duration="2000">
+      Frieren là một nữ pháp sư tộc Elf đã sống hàng trăm năm, sở hữu sức mạnh
+      phép thuật vượt xa con người nhưng lại thiếu trải nghiệm về cảm xúc và giá
+      trị của thời gian. Sau khi cùng nhóm anh hùng tiêu diệt Ma vương, Frieren
+      trở lại cuộc sống lang thang bất tận như trước. Nhưng khi người đồng đội
+      thân thiết — đặc biệt là anh hùng Himmel — qua đời vì tuổi già, Frieren
+      mới thực sự nhận ra rằng thời gian đối với con người rất ngắn ngủi, và
+      việc cô sống quá lâu khiến cô không hiểu được những khoảnh khắc trân quý
+      mà họ từng chia sẻ. Sự hối tiếc muộn màng ấy đã mở ra một hành trình mới:
+      không phải để đánh bại quái vật, mà để hiểu về con người, về các mối quan
+      hệ, và về chính bản thân mình. <br />
+      Trên hành trình ấy, Frieren dần thay đổi: cô học cách quan tâm, học cách
+      tạo dựng ký ức với những người đồng hành như Fern và Stark; học cách sống
+      chậm lại và cảm nhận cảm xúc mà trước đây cô luôn xem nhẹ. Câu chuyện
+      không tập trung vào chiến đấu hào nhoáng, mà nhấn mạnh vào sự bình dị, vào
+      cảm giác tiếc nuối, sự trân trọng ký ức, và hành trình chữa lành của một
+      người bất tử muốn hiểu ý nghĩa của đời người. Thế giới trong Frieren không
+      ồn ào, mà nhẹ nhàng, sâu sắc, nhưng mỗi khoảnh khắc đều mang một thông
+      điệp về thời gian, sự kết nối và giá trị của những kỷ niệm nhỏ bé. Đó
+      chính là điều khiến Frieren trở thành một trong những tác phẩm fantasy cảm
+      xúc và tinh tế nhất hiện nay.
+    </p>
+    <hr data-aos="fade-up" data-aos-duration="3000" />
+    <div class="iteam1" data-aos="fade-right" data-aos-duration="3000">
+      <img src="./anh/full1.webp"full1" />
+      <img src="./anh/full8.webp" alt="full2" />
+      <img src="./anh/full2.webp" alt="full3" />
+      <img src="./anh/full4.webp" alt="full4" />
+    </div>
+    <div class="iteam2" data-aos="fade-left" data-aos-duration="3000">
+      <img width="50px" src="./anh/full5.webp" alt="full5" />
+      <img width="50px" src="./anh/full6.webp" alt="full6" />
+      <img width="50px" src="./anh/full7.webp" alt="full7" />
+      <img width="50px" src="./anh/full9.webp" alt="full8" />
+    </div>
+    <br />
+    <br />
 
     <script>
-      // hoa bay
-      const flowerColors = [
-        "#ff9bb3",
-        "#ffd58a",
-        "#9be3ff",
-        "#c6ffb3",
-        "#ffd0e1",
-        "#c58cff",
-        "#6bf0c3",
-      ];
-      const flowerContainer = document.getElementById("flowers");
-      for (let i = 0; i < 15; i++) {
-        const f = document.createElement("div");
-        f.className = "flower " + (Math.random() < 0.5 ? "small" : "medium");
-        f.style.left = Math.random() * 100 + "%";
-        f.style.top = -10 - Math.random() * 20 + "vh";
-        f.style.animation =
-          (Math.random() < 0.5 ? "floatRight" : "floatLeft") +
-          " " +
-          (15 + Math.random() * 10) +
-          "s linear infinite";
-        f.innerHTML = `<svg class="flower-svg" viewBox="0 0 120 120"><g transform="translate(60,60)"><circle r="${
-          6 + Math.random() * 6
-        }" fill="${
-          flowerColors[Math.floor(Math.random() * flowerColors.length)]
-        }"/></g></svg>`;
-        flowerContainer.appendChild(f);
-      }
-
-      document
-        .querySelectorAll(".flame .f")
-        .forEach(
-          (f) => (f.style.animationDuration = 700 + Math.random() * 700 + "ms")
-        );
-
-      // fireworks
-      const canvas = document.getElementById("fireworks");
-      const ctx = canvas.getContext("2d");
-      let cw, ch;
-      function resize() {
-        cw = canvas.width = window.innerWidth;
-        ch = canvas.height = window.innerHeight;
-      }
-      window.addEventListener("resize", resize);
-      resize();
-      let fireworksParticles = [];
-      function launchFireworks() {
-        for (let i = 0; i < 150; i++) {
-          fireworksParticles.push({
-            x: Math.random() * cw,
-            y: ch + 10,
-            vx: (Math.random() - 0.5) * 10,
-            vy: -Math.random() * 12 - 6,
-            alpha: 1,
-            color: Math.random() * 360,
-            size: 2 + Math.random() * 3,
-          });
-        }
-      }
-      function animateFireworks() {
-        ctx.fillStyle = "rgba(11,16,32,0.2)";
-        ctx.fillRect(0, 0, cw, ch);
-        for (let i = fireworksParticles.length - 1; i >= 0; i--) {
-          const p = fireworksParticles[i];
-          p.x += p.vx;
-          p.y += p.vy;
-          p.vy += 0.2;
-          p.alpha -= 0.01;
-          ctx.fillStyle = `hsla(${p.color},100%,60%,${p.alpha})`;
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-          ctx.fill();
-          if (p.alpha <= 0) fireworksParticles.splice(i, 1);
-        }
-        requestAnimationFrame(animateFireworks);
-      }
-      animateFireworks();
-
-      // click bánh kem
-      const cake = document.getElementById("cake");
-      const subtitle = document.getElementById("subtitle");
-      // tách từng từ
-      subtitle.innerHTML = subtitle.textContent
-        .split(" ")
-        .map((w) => `<span>${w}</span>`)
-        .join(" ");
-      cake.addEventListener("click", () => {
-        document
-          .querySelectorAll(".flame .f")
-          .forEach((fl) => (fl.style.opacity = 0));
-        launchFireworks();
-        subtitle.style.opacity = 1;
-        subtitle.querySelectorAll("span").forEach((c, i) => {
-          c.style.animationDelay = i * 0.12 + "s";
-        });
-      });
+      AOS.init();
     </script>
   </body>
 </html>
